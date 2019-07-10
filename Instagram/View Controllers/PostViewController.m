@@ -18,6 +18,11 @@
 @interface PostViewController () < UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageHolder;
 @property (strong, nonatomic) UIImage *image;
+
+
+@property (weak, nonatomic) IBOutlet UITextView *captionTextView;
+@property (strong, nonatomic) NSString *placeholderText;
+
 @property (weak, nonatomic) IBOutlet UITextView *photoDescription;
 @property (strong, nonatomic)  UIImagePickerController *imagePickerVC;
 @property (nonatomic) BOOL uploading;
@@ -34,7 +39,10 @@
     self.imagePickerVC.delegate = self;
     self.imagePickerVC.allowsEditing = YES;
     self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
 }
+
+
 
 - (IBAction)didTapPicture:(id)sender {\
     NSLog(@"hola, si tapeaste");
@@ -85,43 +93,39 @@
     }
     [textView resignFirstResponder];
 }
+
 - (IBAction)didTapPost:(id)sender {
-        [Post postUserImage:self.image withCaption:self.photoDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if(succeeded) {
-                NSLog(@"Did post");
-                [self.delegate didPostImage:self.image withCaption:self.photoDescription.text];
-            } else {
-                NSLog(@"Error: %@", error);
-            }
-            [self dismissViewControllerAnimated:true completion:nil];
-        }];
+    UIImage *resizedImage = [self resizeImage:self.image withSize:CGSizeMake(350, 350)];
+    
+    [Post postUserImage:resizedImage withCaption:self.photoDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded) {
+            NSLog(@"Did post");
+            [self.delegate didPostImage:self.image withCaption:self.photoDescription.text];
+        } else {
+            NSLog(@"Error: %@", error);
+        }
+        [self.tabBarController setSelectedIndex:0];
+    }];
     }
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 
 - (void)didPostImage:(nonnull UIImage *)photo withCaption:(nonnull NSString *)caption {
     NSLog(@"Uploaded succesfully %@ with caption %@", photo, caption);
 }
 
-//- (IBAction)didTapPost:(id)sender {
-//    if (![self.selectedImage.image isEqual:[UIImage imageNamed:@"image_placeholder"]] && !self.uploading) {
-//        self.uploading = YES;
-//        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        [Post postUserImage:self.selectedImage.image withCaption:self.photoDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-//            if (succeeded) {
-//                NSLog(@"Post success");
-//                self.selectedImage.image = [UIImage imageNamed:@"image_placeholder"];
-//            }
-//            else {
-//                NSLog(@"Failed to post");
-//            }
-//            self.uploading = NO;
-//            [MBProgressHUD hideHUDForView:self.view animated:YES];
-//            [self performSegueWithIdentifier:@"loggedInSegue" sender:nil];
-//        }];
-//    }
-//    else {
-//        NSLog(@"No image to upload");
-//    }
-//}
 
 
 
