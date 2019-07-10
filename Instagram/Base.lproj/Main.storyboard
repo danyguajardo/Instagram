@@ -80,13 +80,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="BZp-Fj-pFq">
-                                <rect key="frame" x="58" y="142" width="281" height="299"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDq-Cs-CAd" userLabel="Upload Picture">
-                                <rect key="frame" x="183" y="502" width="49" height="30"/>
+                                <rect key="frame" x="174" y="104" width="49" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Upload"/>
                                 <connections>
@@ -94,14 +89,14 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Description goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XWf-jb-cCP" userLabel="PicDescription">
-                                <rect key="frame" x="20" y="560" width="374" height="149"/>
+                                <rect key="frame" x="111" y="142" width="192" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JL3-Fr-kCo" userLabel="invisibleButton">
-                                <rect key="frame" x="58" y="153" width="281" height="288"/>
+                                <rect key="frame" x="58" y="276" width="281" height="288"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <state key="normal" title=" "/>
@@ -109,6 +104,11 @@
                                     <action selector="didTapPicture:" destination="Tty-lS-paB" eventType="touchUpInside" id="fad-Bd-qZg"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="BZp-Fj-pFq">
+                                <rect key="frame" x="58" y="265" width="281" height="299"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tqF-8Y-VVx"/>
@@ -116,7 +116,7 @@
                     <navigationItem key="navigationItem" id="gCe-A2-c2X">
                         <barButtonItem key="rightBarButtonItem" title="Post" id="qrB-MV-72J">
                             <connections>
-                                <action selector="didTapPost:" destination="Tty-lS-paB" id="siZ-du-KeC"/>
+                                <action selector="didTapPost:" destination="Tty-lS-paB" id="auj-gY-l4Q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

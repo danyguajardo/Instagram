@@ -10,8 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol homeScreenViewControllerDelegate
+
+- (void)didPostImage:(UIImage *)photo withCaption:(NSString *)caption;
+
+@end
+
 @interface homeScreennViewController : UIViewController
 
 @end
 
 NS_ASSUME_NONNULL_END
+
+

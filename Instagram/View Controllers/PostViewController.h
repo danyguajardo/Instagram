@@ -7,11 +7,23 @@
 //
 
 #import "ViewController.h"
+#import "Post.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PostViewController : UIViewController
+
+@protocol PostViewControllerDelegate
+
+- (void)didPost:(Post *)post;
+- (void)didPostImage:(UIImage *)photo withCaption:(NSString *)caption;
+
 
 @end
+
+@interface PostViewController : UIViewController
+@property (nonatomic, weak) id<PostViewControllerDelegate> delegate;
+
+@end
+
 
 NS_ASSUME_NONNULL_END

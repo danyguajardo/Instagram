@@ -10,11 +10,13 @@
 #import "Parse/Parse.h"
 #import "AppDelegate.h"
 #import <UIKit/UIKit.h>
+#import "Post.h"
+
 
 //#import "Post.h"
 //#import <MBProgressHUD/MBProgressHUD.h>
 
-@interface PostViewController () < UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PostViewController () < UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageHolder;
 @property (strong, nonatomic) UIImage *image;
 @property (weak, nonatomic) IBOutlet UITextView *photoDescription;
@@ -69,6 +71,37 @@
 
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    if ([textView.text isEqualToString:self.photoDescription]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor]; //optional
+    }
+    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = self.photoDescription;
+        textView.textColor = [UIColor lightGrayColor]; //optional
+    }
+    [textView resignFirstResponder];
+}
+- (IBAction)didTapPost:(id)sender {
+        [Post postUserImage:self.image withCaption:self.photoDescription.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded) {
+                NSLog(@"Did post");
+                [self.delegate didPostImage:self.image withCaption:self.photoDescription.text];
+            } else {
+                NSLog(@"Error: %@", error);
+            }
+            [self dismissViewControllerAnimated:true completion:nil];
+        }];
+    }
+
+- (void)didPostImage:(nonnull UIImage *)photo withCaption:(nonnull NSString *)caption {
+    NSLog(@"Uploaded succesfully %@ with caption %@", photo, caption);
+}
+
 //- (IBAction)didTapPost:(id)sender {
 //    if (![self.selectedImage.image isEqual:[UIImage imageNamed:@"image_placeholder"]] && !self.uploading) {
 //        self.uploading = YES;
@@ -102,5 +135,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

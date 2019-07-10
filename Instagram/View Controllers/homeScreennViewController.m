@@ -9,10 +9,13 @@
 #import "homeScreennViewController.h"
 #import "Parse/Parse.h"
 #import <UIKit/UIKit.h>
+#import "Post.h"
+#import "PostViewController.h"
 
 
 
 @interface homeScreennViewController ()
+
 
 
 @end
@@ -100,14 +103,21 @@
  }
  */
 
-/*
- #pragma mark - Navigation
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    UINavigationController *navigationController = [segue destinationViewController];
+    PostViewController *postController = (PostViewController*)navigationController.topViewController;
+    postController.delegate = self;
+}
+
+- (void)didPostImage:(nonnull UIImage *)photo withCaption:(nonnull NSString *)caption {
+    NSLog(@"I uploaded %@ with capt %@", photo, caption);
+}
  
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
