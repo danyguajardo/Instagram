@@ -196,30 +196,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vGb-86-NBk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vGb-86-NBk">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="402" id="1mw-C5-1Bh" customClass="PostCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="402" id="1mw-C5-1Bh" customClass="PostCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="402"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1mw-C5-1Bh" id="mZa-KX-eC8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="401.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48E-7U-gL2" userLabel="postImageView" customClass="PF">
-                                                    <rect key="frame" x="0.0" y="11" width="414" height="288"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="48E-7U-gL2" userLabel="postImageView" customClass="PFImageView">
+                                                    <rect key="frame" x="0.0" y="5" width="414" height="304.5"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiN-5k-oWE" userLabel="captionLabel">
-                                                    <rect key="frame" x="20" y="323" width="71" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiN-5k-oWE" userLabel="captionLabel">
+                                                    <rect key="frame" x="0.0" y="333.5" width="414" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HiN-5k-oWE" firstAttribute="leading" secondItem="mZa-KX-eC8" secondAttribute="leading" id="2fA-Ll-SLr"/>
+                                                <constraint firstItem="48E-7U-gL2" firstAttribute="top" secondItem="mZa-KX-eC8" secondAttribute="top" constant="5" id="CGz-n4-rhE"/>
+                                                <constraint firstAttribute="trailing" secondItem="HiN-5k-oWE" secondAttribute="trailing" id="Mgc-Pt-mYB"/>
+                                                <constraint firstItem="HiN-5k-oWE" firstAttribute="top" secondItem="48E-7U-gL2" secondAttribute="bottom" constant="24" id="WoE-0m-ttp"/>
+                                                <constraint firstItem="48E-7U-gL2" firstAttribute="leading" secondItem="mZa-KX-eC8" secondAttribute="leading" id="bXm-Wg-9A5"/>
+                                                <constraint firstAttribute="trailing" secondItem="48E-7U-gL2" secondAttribute="trailing" id="ujI-ov-eu9"/>
+                                                <constraint firstAttribute="bottom" secondItem="HiN-5k-oWE" secondAttribute="bottom" constant="32" id="zBG-04-JEa"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="HiN-5k-oWE" id="vdw-8j-wDN"/>
@@ -230,6 +236,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vGb-86-NBk" firstAttribute="top" secondItem="agr-cM-Ayt" secondAttribute="top" id="ChI-fw-QhZ"/>
+                            <constraint firstAttribute="bottom" secondItem="vGb-86-NBk" secondAttribute="bottom" id="Jor-Hw-Kw5"/>
+                            <constraint firstItem="vGb-86-NBk" firstAttribute="trailing" secondItem="iw7-oy-EiC" secondAttribute="trailing" id="YOv-hy-xDm"/>
+                            <constraint firstItem="vGb-86-NBk" firstAttribute="leading" secondItem="iw7-oy-EiC" secondAttribute="leading" id="kHr-Nt-eW2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iw7-oy-EiC"/>
                     </view>
                     <navigationItem key="navigationItem" id="Hhq-uf-cFU">
@@ -240,6 +252,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="vGb-86-NBk" id="sjX-KA-ZzH"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="returnToLogIn" id="dcL-bj-NxS"/>
                     </connections>
                 </viewController>
