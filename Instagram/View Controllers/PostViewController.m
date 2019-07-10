@@ -13,7 +13,6 @@
 #import "Post.h"
 
 
-//#import "Post.h"
 //#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface PostViewController () < UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>

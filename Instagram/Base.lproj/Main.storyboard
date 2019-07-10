@@ -13,7 +13,7 @@
         <!--login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="login View Controller" customClass="logInViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" userLabel="login View Controller" customClass="logInViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,7 +116,7 @@
                     <navigationItem key="navigationItem" id="gCe-A2-c2X">
                         <barButtonItem key="rightBarButtonItem" title="Post" id="qrB-MV-72J">
                             <connections>
-                                <action selector="didTapPost:" destination="Tty-lS-paB" id="auj-gY-l4Q"/>
+                                <action selector="didTapPost:" destination="Tty-lS-paB" id="ov5-WO-3WP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -195,29 +195,23 @@
                     <view key="view" contentMode="scaleToFill" id="agr-cM-Ayt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="home" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ah2-3c-Tq9">
-                                <rect key="frame" x="62" y="384" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="iw7-oy-EiC"/>
                     </view>
                     <navigationItem key="navigationItem" id="Hhq-uf-cFU">
-                        <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="NTF-aP-ZXb">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="eef-Di-5I4">
                             <connections>
-                                <action selector="didTapCamera:" destination="TxI-WX-Aax" id="Vc4-3g-9Lk"/>
+                                <action selector="didTapLogout:" destination="TxI-WX-Aax" id="fRX-Ql-Mo8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="returnToLogIn" id="dcL-bj-NxS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="107-lR-Lh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1338" y="-31"/>
+            <point key="canvasLocation" x="1309" y="-31"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nll-Jp-GQP">

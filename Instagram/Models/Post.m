@@ -2,9 +2,10 @@
 //  Post.m
 //  Instagram
 //
-//  Created by danyguajiba on 7/9/19.
+//  Created by danyguajiba on 7/10/19.
 //  Copyright © 2019 danyguajiba. All rights reserved.
 //
+
 
 #import "Post.h"
 

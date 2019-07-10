@@ -9,8 +9,10 @@
 #import "homeScreennViewController.h"
 #import "Parse/Parse.h"
 #import <UIKit/UIKit.h>
-#import "Post.h"
+//#import "Post.h"
 #import "PostViewController.h"
+#import "logInViewController.h"
+#import "AppDelegate.h"
 
 
 
@@ -32,19 +34,22 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)logOutUser {
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        NSLog(@"User logged out successfully");
-        
-        // display view controller that needs to shown after successful logout
-        [self performSegueWithIdentifier:@"returnToLogIn" sender:self];    }];
-    
-}
+
 
 - (IBAction)didTapLogout:(id)sender {
-    [self logOutUser];
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        if(PFUser.currentUser == nil) {
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            logInViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            appDelegate.window.rootViewController = loginViewController;
+            
+            NSLog(@"User logged out successfully");
+        } else {
+            NSLog(@"Error logging out: %@", error);
+        }
+    }];
 }
-
 
 
 #pragma mark - Table view data source
@@ -107,17 +112,17 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    UINavigationController *navigationController = [segue destinationViewController];
-    PostViewController *postController = (PostViewController*)navigationController.topViewController;
-    postController.delegate = self;
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//    UINavigationController *navigationController = [segue destinationViewController];
+//    PostViewController *postController = (PostViewController*)navigationController.topViewController;
+//    postController.delegate = self;
+//}
 
 - (void)didPostImage:(nonnull UIImage *)photo withCaption:(nonnull NSString *)caption {
     NSLog(@"I uploaded %@ with capt %@", photo, caption);
 }
- 
+
 
 @end

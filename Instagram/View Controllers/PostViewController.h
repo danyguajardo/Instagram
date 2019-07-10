@@ -7,14 +7,14 @@
 //
 
 #import "ViewController.h"
-#import "Post.h"
+//#import "Post.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 
 @protocol PostViewControllerDelegate
 
-- (void)didPost:(Post *)post;
+//- (void)didPost:(Post *)post;
 - (void)didPostImage:(UIImage *)photo withCaption:(NSString *)caption;
 
 
