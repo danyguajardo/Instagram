@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import <UIKit/UIKit.h>
 #import "Post.h"
+#import "homeScreennViewController.h"
 
 
 //#import <MBProgressHUD/MBProgressHUD.h>
@@ -19,41 +20,44 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageHolder;
 @property (strong, nonatomic) UIImage *image;
 
-
-@property (weak, nonatomic) IBOutlet UITextView *captionTextView;
+@property (weak, nonatomic) IBOutlet UITextView *photoDescription;
 @property (strong, nonatomic) NSString *placeholderText;
 
-@property (weak, nonatomic) IBOutlet UITextView *photoDescription;
-@property (strong, nonatomic)  UIImagePickerController *imagePickerVC;
-@property (nonatomic) BOOL uploading;
 
+@property (strong, nonatomic)  UIImagePickerController *imagePickerVC;
 
 
 @end
 
 @implementation PostViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.imagePickerVC = [UIImagePickerController new];
-    self.imagePickerVC.delegate = self;
-    self.imagePickerVC.allowsEditing = YES;
-    self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    self.photoDescription.delegate = self;
+    self.placeholderText = @"Caption goes here...";
     
+    self.photoDescription.text = self.placeholderText;
+    self.photoDescription.textColor = [UIColor lightGrayColor];
 }
+
+
 
 
 
 - (IBAction)didTapPicture:(id)sender {\
     NSLog(@"hola, si tapeaste");
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
 //    else {
 //        NSLog(@"Camera 🚫 available so we will use photo library instead");
-//        self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 //    }
-    [self presentViewController:self.imagePickerVC animated:YES completion:nil];
+    
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
 
 
 }
@@ -73,13 +77,19 @@
 
 
 - (IBAction)didTapUpload:(id)sender {
-    self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self presentViewController:self.imagePickerVC animated:YES completion:nil];
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+
 
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    if ([textView.text isEqualToString:self.photoDescription]) {
+    if ([textView.text isEqualToString:self.placeholderText]) {
         textView.text = @"";
         textView.textColor = [UIColor blackColor]; //optional
     }
@@ -88,7 +98,7 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
     if ([textView.text isEqualToString:@""]) {
-        textView.text = self.photoDescription;
+        textView.text = self.placeholderText;
         textView.textColor = [UIColor lightGrayColor]; //optional
     }
     [textView resignFirstResponder];

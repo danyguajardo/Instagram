@@ -14,6 +14,7 @@
 #import "PostViewController.h"
 #import "logInViewController.h"
 #import "AppDelegate.h"
+#import "DetailsViewController.h"
 
 
 
@@ -37,6 +38,8 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchPosts)forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    [self fetchPosts];
+
 }
 
 - (void)fetchPosts {
@@ -83,14 +86,15 @@
         PostViewController *postController = (PostViewController*)navigationController.topViewController;
         postController.delegate = self;
     }
-//    else {
-//        UITableViewCell *tappedCell = sender;
-//        NSIndexPath *indexPath =  [self.tableView indexPathForCell:tappedCell];
-//        Post *post = self.posts[indexPath.row];
-//
-//        DetailsViewController *detailsViewController = [segue destinationViewController];
-//        detailsViewController.post = post;
-//    }
+    else if([[segue identifier] isEqualToString:@"detailsSegue"]) {
+        NSLog(@"detailsSegue");
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath =  [self.tableView indexPathForCell:tappedCell];
+        Post *post = self.posts[indexPath.row];
+
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = post;
+    }
 }
 
 - (void)didPostImage:(nonnull UIImage *)photo withCaption:(nonnull NSString *)caption {
