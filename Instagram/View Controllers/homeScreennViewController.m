@@ -107,6 +107,7 @@
     Post *post = self.posts[indexPath.row];
     [cell configureCell:post];
     
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 
