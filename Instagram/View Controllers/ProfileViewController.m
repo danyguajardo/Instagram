@@ -20,6 +20,10 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) bool isMoreDataLoading;
 
+@property (strong, nonatomic) UIImage *photo;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+
 @end
 
 
@@ -99,6 +103,40 @@
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.postArray.count;
 }
+
+
+- (IBAction)didTapImage:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+    
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    // Get the image captured by the UIImagePickerController
+    //UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    
+    // Do something with the images (based on your use case)
+    self.photo = editedImage;
+    self.imageView.image = self.photo;
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 /*
  #pragma mark - Navigation
  // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -109,4 +147,6 @@
  */
 
 @end
+
+
 

@@ -183,27 +183,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dr6-RF-MeB">
-                                <rect key="frame" x="15" y="100" width="151" height="178"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Dr6-RF-MeB">
+                                <rect key="frame" x="10" y="50" width="151" height="178"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="151" id="7f2-do-CoU"/>
                                     <constraint firstAttribute="height" constant="178" id="qsD-q8-FUV"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="C7V-Gx-XG3" appends="YES" id="Buz-WV-45l"/>
+                                </connections>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biR-Ps-r7A" userLabel="Name">
-                                <rect key="frame" x="179" y="100" width="196" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7a-Jh-WvZ" userLabel="Username">
-                                <rect key="frame" x="179" y="137" width="76" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="169" y="64" width="206" height="32.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YRZ-7w-Ouo">
-                                <rect key="frame" x="0.0" y="305" width="375" height="362"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YRZ-7w-Ouo">
+                                <rect key="frame" x="0.0" y="236" width="375" height="449"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qKo-g0-r4O">
                                     <size key="itemSize" width="118" height="115"/>
@@ -222,6 +221,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aan-1h-eXI">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="117"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -234,28 +234,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="biR-Ps-r7A" firstAttribute="leading" secondItem="Dr6-RF-MeB" secondAttribute="trailing" constant="13" id="4fO-Gd-4F9"/>
-                            <constraint firstItem="R7a-Jh-WvZ" firstAttribute="top" secondItem="biR-Ps-r7A" secondAttribute="bottom" constant="8" id="Clp-e6-pOr"/>
-                            <constraint firstItem="YRZ-7w-Ouo" firstAttribute="top" secondItem="R7a-Jh-WvZ" secondAttribute="bottom" constant="147" id="Oub-Ed-OSj"/>
-                            <constraint firstItem="YRZ-7w-Ouo" firstAttribute="trailing" secondItem="QWi-lM-Red" secondAttribute="trailing" id="Uor-yY-8O9"/>
-                            <constraint firstItem="Dr6-RF-MeB" firstAttribute="leading" secondItem="75d-Yo-BMY" secondAttribute="leading" constant="15" id="ZmW-pc-V5F"/>
-                            <constraint firstItem="R7a-Jh-WvZ" firstAttribute="leading" secondItem="biR-Ps-r7A" secondAttribute="leading" id="ap8-nh-QP7"/>
-                            <constraint firstItem="YRZ-7w-Ouo" firstAttribute="leading" secondItem="QWi-lM-Red" secondAttribute="leading" id="fDL-h2-BY5"/>
-                            <constraint firstAttribute="bottom" secondItem="YRZ-7w-Ouo" secondAttribute="bottom" id="l96-3a-hVe"/>
-                            <constraint firstItem="biR-Ps-r7A" firstAttribute="top" secondItem="Dr6-RF-MeB" secondAttribute="top" id="uMA-gN-tIy"/>
-                            <constraint firstItem="biR-Ps-r7A" firstAttribute="trailing" secondItem="QWi-lM-Red" secondAttribute="trailing" id="xXX-OI-4dC"/>
-                            <constraint firstItem="Dr6-RF-MeB" firstAttribute="top" secondItem="75d-Yo-BMY" secondAttribute="top" constant="100" id="ytR-MQ-geU"/>
+                            <constraint firstItem="R7a-Jh-WvZ" firstAttribute="trailing" secondItem="QWi-lM-Red" secondAttribute="trailing" id="ZRV-rr-PDC"/>
+                            <constraint firstItem="Dr6-RF-MeB" firstAttribute="leading" secondItem="75d-Yo-BMY" secondAttribute="leading" constant="10" id="ZmW-pc-V5F"/>
+                            <constraint firstItem="R7a-Jh-WvZ" firstAttribute="top" secondItem="QWi-lM-Red" secondAttribute="top" id="asx-er-6Ze"/>
+                            <constraint firstItem="R7a-Jh-WvZ" firstAttribute="leading" secondItem="Dr6-RF-MeB" secondAttribute="trailing" constant="8" id="lJo-gb-7BE"/>
+                            <constraint firstItem="Dr6-RF-MeB" firstAttribute="top" secondItem="75d-Yo-BMY" secondAttribute="top" constant="50" id="ytR-MQ-geU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QWi-lM-Red"/>
                     </view>
                     <navigationItem key="navigationItem" id="XES-LO-JDN"/>
                     <connections>
                         <outlet property="collectionView" destination="YRZ-7w-Ouo" id="Y81-ca-qs5"/>
-                        <outlet property="profileImageView" destination="Dr6-RF-MeB" id="mEy-gM-QEK"/>
+                        <outlet property="imageView" destination="Dr6-RF-MeB" id="hTR-h2-ZUS"/>
                         <outlet property="username" destination="R7a-Jh-WvZ" id="PVr-iy-6iv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="obx-PA-xAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="C7V-Gx-XG3">
+                    <connections>
+                        <action selector="didTapImage:" destination="lTb-W8-CCF" id="BLU-Ux-ZjG"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="453.60000000000002" y="1524.2878560719641"/>
         </scene>
