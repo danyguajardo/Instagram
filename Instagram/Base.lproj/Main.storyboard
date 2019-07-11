@@ -266,6 +266,7 @@
                                         <connections>
                                             <outlet property="captionLabel" destination="HiN-5k-oWE" id="vdw-8j-wDN"/>
                                             <outlet property="postImageView" destination="48E-7U-gL2" id="UCM-wa-I7P"/>
+                                            <outlet property="username" destination="3MC-bv-2p6" id="rjc-yl-p1K"/>
                                             <segue destination="o4l-v7-qYb" kind="show" identifier="detailsSegue" id="Dly-II-Zc0"/>
                                         </connections>
                                     </tableViewCell>
@@ -349,6 +350,7 @@
                         <outlet property="captionLabel" destination="kfn-xz-Dd1" id="OSv-Vm-Gm0"/>
                         <outlet property="createdAtLabel" destination="Bab-ol-eZp" id="Wkr-qC-Ted"/>
                         <outlet property="photoImageView" destination="Wt4-GD-VgC" id="7ne-cL-Bpo"/>
+                        <outlet property="username" destination="G0a-7H-Hcr" id="LGY-6r-NtK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oHa-Qe-KVa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -503,6 +505,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="IOU-jL-w7c"/>
-        <segue reference="zDR-cn-WEH"/>
+        <segue reference="XkQ-4q-75s"/>
     </inferredMetricsTieBreakers>
 </document>

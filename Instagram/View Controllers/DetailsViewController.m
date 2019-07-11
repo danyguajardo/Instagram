@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet PFImageView *photoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *createdAtLabel;
+@property (weak, nonatomic) IBOutlet UILabel *username;
 
 @end
 
@@ -36,6 +37,10 @@
     NSDate *timeAgoDate = [NSDate dateWithTimeInterval:0 sinceDate:date];
     // Convert Date to String
     self.createdAtLabel.text = timeAgoDate.shortTimeAgoSinceNow;
+    
+    PFUser *author = self.post.author;
+    NSString *username = author.username;
+    self.username.text = [NSString stringWithFormat:@"@%@", username];
 }
 
 /*
