@@ -45,6 +45,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+http://g.recordit.co/7NT72w2IIO.gif
 
 <img src='http://g.recordit.co/7NT72w2IIO.gif' alt='Video Walkthrough'/> GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
